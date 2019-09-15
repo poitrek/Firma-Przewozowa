@@ -27,16 +27,17 @@ import javax.persistence.Entity;
 @Table (name = "autobusy")
 public class Autobus {
 	
+
+//	@TableGenerator(
+//		name="autobusIdGen", 
+//        table="ID_GEN", 
+//        pkColumnName="GEN_KEY",
+//        valueColumnName="GEN_VALUE", 
+//        pkColumnValue="IDAUTOBUSU", 
+//        allocationSize=1
+//    )
 	@Id
-	@TableGenerator(
-		name="autobusIdGen", 
-        table="ID_GEN", 
-        pkColumnName="GEN_KEY",
-        valueColumnName="GEN_VALUE", 
-        pkColumnValue="IDAUTOBUSU", 
-        allocationSize=1
-    )
-    @GeneratedValue(generator = "autobusIdGen", strategy=GenerationType.TABLE)
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
 	int id_autobusu;
 	String nr_rejestracyjny;
 	int liczba_miejsc;

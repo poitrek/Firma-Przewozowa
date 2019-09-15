@@ -31,16 +31,16 @@ import pl.polsl.take.firma.utils.TimestampAdapter;
 @Table (name = "przewozy")
 public class Przewoz {
 
+//	@TableGenerator(
+//		name="przewozIdGen", 
+//        table="ID_GEN", 
+//        pkColumnName="GEN_KEY", 
+//        valueColumnName="GEN_VALUE", 
+//        pkColumnValue="IDPRZEWOZU", 
+//        allocationSize=1
+//    )
 	@Id
-	@TableGenerator(
-		name="przewozIdGen", 
-        table="ID_GEN", 
-        pkColumnName="GEN_KEY", 
-        valueColumnName="GEN_VALUE", 
-        pkColumnValue="IDPRZEWOZU", 
-        allocationSize=1
-    )
-    @GeneratedValue(generator = "przewozIdGen", strategy=GenerationType.TABLE)
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
 	int id_przewozu;
 
 	@ManyToOne

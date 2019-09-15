@@ -28,7 +28,7 @@ import javax.persistence.Entity;
 @Table(name = "klienci")
 public class Klient {
 	
-	@Id
+
 //	@TableGenerator(
 //		name="klientIdGen", 
 //        table="ID_GEN", 
@@ -37,7 +37,8 @@ public class Klient {
 //        pkColumnValue="IDKLIENTA", 
 //        allocationSize=1
 //    )
-    @GeneratedValue(generator = "klientIdGen", strategy=GenerationType.AUTO)
+	@Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     int id_klienta;
 	String imie;
 	String nazwisko;

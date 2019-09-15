@@ -22,16 +22,16 @@ import com.sun.istack.internal.NotNull;
 @Table (name = "rezerwacje")
 public class Rezerwacja {
 	
+//	@TableGenerator(
+//		name="rezerwacjaIdGen", 
+//        table="ID_GEN", 
+//        pkColumnName="GEN_KEY", 
+//        valueColumnName="GEN_VALUE", 
+//        pkColumnValue="IDREZERWACJI", 
+//        allocationSize=1
+//    )
 	@Id
-	@TableGenerator(
-		name="rezerwacjaIdGen", 
-        table="ID_GEN", 
-        pkColumnName="GEN_KEY", 
-        valueColumnName="GEN_VALUE", 
-        pkColumnValue="IDREZERWACJI", 
-        allocationSize=1
-    )
-    @GeneratedValue(generator = "rezerwacjaIdGen", strategy=GenerationType.TABLE)
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
 	int id_rezerwacji;
 	
 	@ManyToOne

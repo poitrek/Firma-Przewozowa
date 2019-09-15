@@ -24,16 +24,16 @@ import pl.polsl.take.firma.entities.lists.Przewozy;
 @Table (name = "trasy")
 public class Trasa {
 	
+//	@TableGenerator(
+//		name="trasaIdGen", 
+//        table="ID_GEN", 
+//        pkColumnName="GEN_KEY", 
+//        valueColumnName="GEN_VALUE", 
+//        pkColumnValue="IDTRASY", 
+//        allocationSize=1
+//    )
 	@Id
-	@TableGenerator(
-		name="trasaIdGen", 
-        table="ID_GEN", 
-        pkColumnName="GEN_KEY", 
-        valueColumnName="GEN_VALUE", 
-        pkColumnValue="IDTRASY", 
-        allocationSize=1
-    )
-    @GeneratedValue(generator = "trasaIdGen", strategy=GenerationType.TABLE)
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
 	int id_trasy;
 	String stacja_poczatkowa;
 	String stacja_koncowa;
