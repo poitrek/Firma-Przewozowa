@@ -71,6 +71,8 @@ public class FirmaTableModel<E extends TableElemDAO> extends AbstractTableModel 
 		E elem = DAO.classE.newInstance();
 		add(elem);
 	}
+	
+//	public void addNew()
 
 	public void del(int rowIndex) {
 		E elem = elements.get(rowIndex);

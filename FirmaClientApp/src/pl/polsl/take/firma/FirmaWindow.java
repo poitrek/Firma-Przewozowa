@@ -36,13 +36,13 @@ public class FirmaWindow extends JFrame {
 	}
 	
 	public static FirmaWindow createFirma() {
-		FirmaTablePanel pacjentCRUD =	initPanel(Przewoz.class, Przewozy.class, new Przewoz());
+		FirmaTablePanel przewozCRUD =	initPanel(Przewoz.class, Przewozy.class, new Przewoz());
 		FirmaTablePanel klientCRUD = initPanel(Klient.class, Klienci.class, new Klient());
 		FirmaTablePanel autobusCRUD =	initPanel(Autobus.class, Autobusy.class, new Autobus());
 		FirmaTablePanel trasaCRUD = initPanel(Trasa.class, Trasy.class, new Trasa());
 		FirmaTablePanel rezerwacjaCRUD =	initPanel(Rezerwacja.class, Rezerwacje.class, new Rezerwacja());
 		FirmaWindow okno = new FirmaWindow(
-				pacjentCRUD, klientCRUD, autobusCRUD, trasaCRUD, rezerwacjaCRUD
+				przewozCRUD, klientCRUD, autobusCRUD, trasaCRUD, rezerwacjaCRUD
 		);
 		
 		return okno;
