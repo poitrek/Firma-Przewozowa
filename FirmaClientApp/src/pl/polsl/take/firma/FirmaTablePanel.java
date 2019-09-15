@@ -25,7 +25,7 @@ public class FirmaTablePanel extends JPanel {
 	
 	private FirmaTableModel<?> tableModel;
 	private JTable table;
-	private JPanel addItemForm;
+	private AddItemForm addItemForm;
 
 	public FirmaTablePanel(FirmaTableModel<?> tableModel) {
 		this.tableModel = tableModel;
@@ -40,7 +40,7 @@ public class FirmaTablePanel extends JPanel {
 		add(scrollPane, BorderLayout.NORTH);
 		
 		// Tworzymy formę dodawania elementu i dodajemy ją do panelu
-		this.addItemForm = createAddItemForm(tableModel);
+		this.addItemForm = new AddItemForm(tableModel);
 		add(addItemForm, BorderLayout.CENTER);
 //		add(centerPanel, BorderLayout.CENTER);
 		// Tworzymy i dodajemy do panelu przyciski
@@ -53,6 +53,7 @@ public class FirmaTablePanel extends JPanel {
 	}
 	
 	// Tworzy panel dodawania elementu na podstawie jego modelu tabeli
+	@Deprecated
 	private JPanel createAddItemForm(FirmaTableModel<?> tableModel) {
 		JPanel panel = new JPanel();
 		GroupLayout layout = new GroupLayout(panel);
@@ -134,7 +135,7 @@ public class FirmaTablePanel extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				try {
-					tableModel.addNew();
+					tableModel.addNew(addItemForm.getFormInputValues());
 				} catch (Exception ex) {
 					JOptionPane.showMessageDialog(null, "Nie mozna utworzyć nowego elementu !",
 							"Błąd", JOptionPane.ERROR_MESSAGE);

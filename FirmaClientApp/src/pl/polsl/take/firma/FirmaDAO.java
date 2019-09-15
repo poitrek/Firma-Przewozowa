@@ -32,6 +32,8 @@ public class FirmaDAO<E extends TableElemDAO, EL extends ElemListDAO<E>> {
 	}
 	
 	public void createElement(E elem) {
+		System.out.println("Client:FirmaDAO: tworzenie elementu " + elem.getClass());
+		System.out.println(elem.toString());
 		String url = base_url + urlPart;
 		StringWriter sw = new StringWriter();
 		JAXB.marshal(elem, sw);

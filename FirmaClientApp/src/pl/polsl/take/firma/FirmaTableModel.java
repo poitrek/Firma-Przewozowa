@@ -72,7 +72,20 @@ public class FirmaTableModel<E extends TableElemDAO> extends AbstractTableModel 
 		add(elem);
 	}
 	
-//	public void addNew()
+	// Dodaje nowy element i nadaje mu wartości atrybutów z listy stringów
+	// w takiej kolejności, w jakiej są na liście
+	public void addNew(List<String> attributeList) throws InstantiationException,
+			IllegalAccessException {
+		E elem = DAO.classE.newInstance();
+		// Startujemy od atrybutu od indeksie 1, bo na początku jest
+		// klucz główny, który pomijamy
+		int counter = 1;
+		for (String att : attributeList) {
+			elem.setProperty(counter, att);
+			counter++;
+		}
+		add(elem);
+	}
 
 	public void del(int rowIndex) {
 		E elem = elements.get(rowIndex);

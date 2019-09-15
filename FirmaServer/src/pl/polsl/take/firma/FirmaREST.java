@@ -23,7 +23,7 @@ import pl.polsl.take.firma.entities.lists.Rezerwacje;
 import pl.polsl.take.firma.entities.lists.Przewozy;
 
 @Path("/firma")
-//@Consumes({ "application/xml"})
+@Consumes({ "application/xml"})
 @Produces({ "application/xml" })
 
 public class FirmaREST implements Firma {

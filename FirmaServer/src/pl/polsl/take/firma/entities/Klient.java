@@ -29,15 +29,15 @@ import javax.persistence.Entity;
 public class Klient {
 	
 	@Id
-	@TableGenerator(
-		name="klientIdGen", 
-        table="ID_GEN", 
-        pkColumnName="GEN_KEY", 
-        valueColumnName="GEN_VALUE", 
-        pkColumnValue="IDKLIENTA", 
-        allocationSize=1
-    )
-    @GeneratedValue(generator = "klientIdGen", strategy=GenerationType.TABLE)
+//	@TableGenerator(
+//		name="klientIdGen", 
+//        table="ID_GEN", 
+//        pkColumnName="GEN_KEY", 
+//        valueColumnName="GEN_VALUE", 
+//        pkColumnValue="IDKLIENTA", 
+//        allocationSize=1
+//    )
+    @GeneratedValue(generator = "klientIdGen", strategy=GenerationType.AUTO)
     int id_klienta;
 	String imie;
 	String nazwisko;

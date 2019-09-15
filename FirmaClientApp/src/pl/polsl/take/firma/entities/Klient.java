@@ -64,7 +64,7 @@ public class Klient implements TableElemDAO {
 	}
 
 	public void setHaslo(String haslo) {
-		this.nr_tel = haslo;
+		this.haslo = haslo;
 	}
 	@Override
 	public String toString() {
