@@ -87,7 +87,8 @@ public class FirmaTableModel<E extends TableElemDAO> extends AbstractTableModel 
 		add(elem);
 	}
 
-	public void del(int rowIndex) {
+	public void del(int rowIndex) throws InstantiationException,
+	IllegalAccessException {
 		E elem = elements.get(rowIndex);
 		DAO.deleteElement(elem.getId());
 		updateModel();
