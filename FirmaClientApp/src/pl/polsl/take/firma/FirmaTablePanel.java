@@ -151,7 +151,15 @@ public class FirmaTablePanel extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				int index = table.getSelectedRow();
 				if (index >= 0)
-					tableModel.del(index);
+				{
+					try {
+						tableModel.del(index);
+					} catch(Exception ex) {
+						JOptionPane.showMessageDialog(null, "Nie mozna usunac tego elementu !",
+								"Błąd", JOptionPane.ERROR_MESSAGE);
+					}
+				}
+					
 			}
 		});
 		pnPrzyciski.add(btnUsun);
