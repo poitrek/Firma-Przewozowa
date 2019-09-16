@@ -136,6 +136,7 @@ public class FirmaTablePanel extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				try {
 					tableModel.addNew(addItemForm.getFormInputValues());
+					addItemForm.clearFormFields();
 				} catch (Exception ex) {
 					JOptionPane.showMessageDialog(null, "Nie mozna utworzyć nowego elementu !",
 							"Błąd", JOptionPane.ERROR_MESSAGE);

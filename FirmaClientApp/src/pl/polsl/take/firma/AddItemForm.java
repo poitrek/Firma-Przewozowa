@@ -77,5 +77,12 @@ public class AddItemForm extends JPanel {
 		}
 		return formValues;
 	}
+	
+	// Czyści pola formy
+	public void clearFormFields() {
+		for (int i = 0; i < textFields.length; i++) {
+			textFields[i].setText("");
+		}
+	}
 
 }
