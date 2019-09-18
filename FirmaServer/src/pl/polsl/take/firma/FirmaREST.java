@@ -23,281 +23,331 @@ import pl.polsl.take.firma.entities.lists.Rezerwacje;
 import pl.polsl.take.firma.entities.lists.Przewozy;
 
 @Path("/firma")
-@Consumes({ "application/xml"})
+@Consumes({ "application/xml" })
 @Produces({ "application/xml" })
 
 public class FirmaREST implements Firma {
-	
-    // Bean ==========================================================================
+
+	private static final String OK_RESULT = "OK";
+	private static final String ERR_RESULT = "ERR";
+	// Bean
+	// ==========================================================================
 	@EJB
 	FirmaEJB bean;
-	
-    // Klienci =======================================================================
+
+	// Klienci
+	// =======================================================================
 	@Override
 	@POST
 	@Path("/klienci")
-	public String createKlient(Klient klient){
-		bean.createKlient(klient);
-		return "klient created!";
+	public String createKlient(Klient klient) {
+		try {
+			bean.createKlient(klient);
+			return OK_RESULT;
+		} catch (Exception e) {
+			return ERR_RESULT;
+		}
 	}
-	
+
 	@Override
 	@GET
 	@Path("klienci/{idklienta}")
-	public Klient findKlient(@PathParam("idklienta") int idklienta){
+	public Klient findKlient(@PathParam("idklienta") int idklienta) {
 		Klient klient = bean.findKlient(idklienta);
 		return klient;
 	}
-	
+
 	@Override
 	@GET
 	@Path("/klienci")
-	public Klienci getKlienci(){
+	public Klienci getKlienci() {
 		List<Klient> klienciList = bean.getKlienci();
 		Klienci klienci = new Klienci(klienciList);
 		return klienci;
 	}
-	
+
 	@Override
 	@PUT
 	@Path("/klienci")
-	public String updateKlient(Klient klient){
-		try{
+	public String updateKlient(Klient klient) {
+		try {
 			bean.updateKlient(klient);
 			return "klient updated!";
-		}catch (Exception e){
+		} catch (Exception e) {
 			e.printStackTrace();
 			return "klient not updated :(";
 		}
 	}
-	
+
 	@Override
 	@DELETE
 	@Path("klienci/{idklienta}")
-	public void deleteKlient(@PathParam("idklienta") int idklienta){
-		bean.deleteKlient(idklienta);
+	public String deleteKlient(@PathParam("idklienta") int idklienta) {
+		try {
+			bean.deleteKlient(idklienta);
+			return OK_RESULT;
+		} catch (Exception e) {
+			return ERR_RESULT;
+		}
 	}
-	
-    // Autobusy ======================================================================
+
+	// Autobusy
+	// ======================================================================
 	@Override
 	@POST
 	@Path("/autobusy")
-	public String createAutobus(Autobus autobus){
-		bean.createAutobus(autobus);
-		return "autobus created!";
+	public String createAutobus(Autobus autobus) {
+		try {
+			bean.createAutobus(autobus);
+			return OK_RESULT;
+		} catch (Exception e) {
+			return ERR_RESULT;
+		}
 	}
-	
-	
+
 	@Override
 	@GET
 	@Path("autobusy/{id_autobusu}")
-	public Autobus findAutobus(@PathParam("id_autobusu") int idautobusu){
+	public Autobus findAutobus(@PathParam("id_autobusu") int idautobusu) {
 		Autobus autobus = bean.findAutobus(idautobusu);
 		return autobus;
 	}
-	
+
 	@Override
 	@GET
 	@Path("/autobusy")
-	public Autobusy getAutobusy(){
+	public Autobusy getAutobusy() {
 		List<Autobus> autobusyList = bean.getAutobusy();
 		Autobusy autobusy = new Autobusy(autobusyList);
 		return autobusy;
 	}
-	
+
 	@Override
 	@PUT
 	@Path("/autobusy")
-	public String updateAutobus(Autobus autobus){
-		try{
+	public String updateAutobus(Autobus autobus) {
+		try {
 			bean.updateAutobus(autobus);
 			return "autobus updated!";
-		}catch (Exception e){
+		} catch (Exception e) {
 			e.printStackTrace();
 			return "autobus not updated :(";
 		}
 	}
-	
+
 	@Override
 	@DELETE
 	@Path("autobusy/{id_autobusu}")
-	public void deleteAutobus(@PathParam("id_autobusu") int idautobusu){
-		bean.deleteAutobus(idautobusu);
+	public String deleteAutobus(@PathParam("id_autobusu") int idautobusu) {
+		try {
+			bean.deleteAutobus(idautobusu);
+			return OK_RESULT;
+		} catch (Exception e) {
+			return ERR_RESULT;
+		}
 	}
-	
-    // Trasy =========================================================================
+
+	// Trasy
+	// =========================================================================
 	@Override
 	@POST
 	@Path("/trasy")
-	public String createTrasa(Trasa trasa){
-		bean.createTrasa(trasa);
-		return "trasa created!";
+	public String createTrasa(Trasa trasa) {
+		try {
+			bean.createTrasa(trasa);
+			return OK_RESULT;
+		} catch (Exception e) {
+			return ERR_RESULT;
+		}
 	}
-	
-	
+
 	@Override
 	@GET
 	@Path("trasy/{idtrasy}")
-	public Trasa findTrasa(@PathParam("idtrasy") int idtrasy){
+	public Trasa findTrasa(@PathParam("idtrasy") int idtrasy) {
 		Trasa trasa = bean.findTrasa(idtrasy);
 		return trasa;
 	}
-	
+
 	@Override
 	@GET
 	@Path("/trasy")
-	public Trasy getTrasy(){
+	public Trasy getTrasy() {
 		List<Trasa> trasyList = bean.getTrasy();
 		Trasy trasy = new Trasy(trasyList);
 		return trasy;
 	}
-	
+
 	@Override
 	@PUT
 	@Path("/trasy")
-	public String updateTrasa(Trasa trasa){
-		try{
+	public String updateTrasa(Trasa trasa) {
+		try {
 			bean.updateTrasa(trasa);
 			return "trasa updated!";
-		}catch (Exception e){
+		} catch (Exception e) {
 			e.printStackTrace();
 			return "trasa not updated :(";
 		}
 	}
-	
+
 	@Override
 	@DELETE
 	@Path("trasy/{idtrasy}")
-	public void deleteTrasa(@PathParam("idtrasy") int idtrasy){
-		bean.deleteTrasa(idtrasy);
+	public String deleteTrasa(@PathParam("idtrasy") int idtrasy) {
+		try {
+			bean.deleteTrasa(idtrasy);
+			return OK_RESULT;
+		} catch (Exception e) {
+			return ERR_RESULT;
+		}
 	}
-	
-    // Rezerwacje ====================================================================
+
+	// Rezerwacje
+	// ====================================================================
 	@Override
 	@POST
 	@Path("/rezerwacje")
-	public String createRezerwacja(Rezerwacja rezerwacja){
-		bean.createRezerwacja(rezerwacja);
-		return "rezerwacja created!";
+	public String createRezerwacja(Rezerwacja rezerwacja) {
+		try {
+			bean.createRezerwacja(rezerwacja);
+			return OK_RESULT;
+		} catch (Exception e) {
+			return ERR_RESULT;
+		}
 	}
-	
-	
+
 	@Override
 	@GET
 	@Path("rezerwacje/{idrezerwacji}")
-	public Rezerwacja findREzerwacje(@PathParam("idrezerwacji") int idrezerwacji){
+	public Rezerwacja findREzerwacje(@PathParam("idrezerwacji") int idrezerwacji) {
 		Rezerwacja rezerwacja = bean.findRezerwacje(idrezerwacji);
 		return rezerwacja;
 	}
-	
+
 	@Override
 	@GET
 	@Path("/rezerwacje")
-	public Rezerwacje getRezerwacje(){
+	public Rezerwacje getRezerwacje() {
 		List<Rezerwacja> rezerwacjaList = bean.getRezerwacje();
 		Rezerwacje rezerwacje = new Rezerwacje(rezerwacjaList);
 		return rezerwacje;
 	}
-	
+
 	@Override
 	@PUT
 	@Path("/rezerwacje")
-	public String updateRezerwacje(Rezerwacja rezerwacja){
-		try{
+	public String updateRezerwacje(Rezerwacja rezerwacja) {
+		try {
 			bean.updateRezerwacje(rezerwacja);
 			return "Rezerwacja updated!";
-		}catch (Exception e){
+		} catch (Exception e) {
 			e.printStackTrace();
 			return "Rezerwacja not updated :(";
 		}
 	}
-	
+
 	@Override
 	@DELETE
 	@Path("rezerwacje/{idrezerwacji}")
-	public void deleteRezerwacja(@PathParam("idrezerwacji") int idrezerwacji){
-		bean.deleteRezerwacja(idrezerwacji);
+	public String deleteRezerwacja(@PathParam("idrezerwacji") int idrezerwacji) {
+		try {
+			bean.deleteRezerwacja(idrezerwacji);
+			return OK_RESULT;
+		} catch (Exception e) {
+			return ERR_RESULT;
+		}
 	}
-	
-    // Przewozy ======================================================================
+
+	// Przewozy
+	// ======================================================================
 	@Override
 	@POST
 	@Path("/przewozy")
-	public String createPrzewoz(Przewoz przewoz){
-		bean.createPrzewoz(przewoz);
-		return "przewoz created!";
+	public String createPrzewoz(Przewoz przewoz) {
+		try {
+			bean.createPrzewoz(przewoz);
+			return OK_RESULT;
+		} catch (Exception e) {
+			return ERR_RESULT;
+		}
 	}
-	
-	
+
 	@Override
 	@GET
 	@Path("przewozy/{idprzewozu}")
-	public Przewoz findPrzewoz(@PathParam("idprzewozu") int idprzewozu){
+	public Przewoz findPrzewoz(@PathParam("idprzewozu") int idprzewozu) {
 		Przewoz przewoz = bean.findPrzewoz(idprzewozu);
 		return przewoz;
 	}
-	
+
 	@Override
 	@GET
 	@Path("/przewozy")
-	public Przewozy getPrzewoz(){
+	public Przewozy getPrzewoz() {
 		List<Przewoz> przewozList = bean.getPrzewoz();
 		Przewozy przewozy = new Przewozy(przewozList);
 		return przewozy;
 	}
-	
+
 	@Override
 	@PUT
 	@Path("/przewozy")
-	public String updatePrzewoz(Przewoz przewoz){
-		try{
+	public String updatePrzewoz(Przewoz przewoz) {
+		try {
 			bean.updatePrzewoz(przewoz);
 			return "przewoz updated!";
-		}catch (Exception e){
+		} catch (Exception e) {
 			e.printStackTrace();
 			return "przewoz not updated :(";
 		}
 	}
-	
+
 	@Override
 	@DELETE
 	@Path("przewozy/{idprzewozu}")
-	public void deletePrzewoz(@PathParam("idprzewozu") int idprzewozu){
-		bean.deletePrzewoz(idprzewozu);
+	public String deletePrzewoz(@PathParam("idprzewozu") int idprzewozu) {
+		try {
+			bean.deletePrzewoz(idprzewozu);
+			return OK_RESULT;
+		} catch (Exception e) {
+			return ERR_RESULT;
+		}
 	}
-	
-    // Zapytania zlozone =============================================================
+
+	// Zapytania zlozone
+	// =============================================================
 	@Override
 	@GET
 	@Path("/autobusy/{id_autobusu}/przewozy")
-	public Przewozy getPrzewozyAutobusu(@PathParam("id_autobusu") int idautobusu){
+	public Przewozy getPrzewozyAutobusu(@PathParam("id_autobusu") int idautobusu) {
 		List<Przewoz> listaPrzewozow = bean.getPrzewozyAutobusu(idautobusu);
 		Przewozy przewozyAutobusu = new Przewozy(listaPrzewozow);
 		return przewozyAutobusu;
 	}
-	
+
 	@Override
 	@GET
 	@Path("/klienci/{idklienta}/rezerwacje")
-	public Rezerwacje getRezerwacjeKlienta(@PathParam("idklienta") int idklienta){
+	public Rezerwacje getRezerwacjeKlienta(@PathParam("idklienta") int idklienta) {
 		List<Rezerwacja> listaRezerwacji = bean.getRezerwacjeKlienta(idklienta);
 		Rezerwacje rezerwacjeKlienta = new Rezerwacje(listaRezerwacji);
 		return rezerwacjeKlienta;
 	}
-	
+
 	@Override
 	@GET
 	@Path("/przewozy/{idprzewozu}/rezerwacje")
-	public Rezerwacje getRezerwacjePrzewozu(@PathParam("idprzewozu") int idprzewozu){
+	public Rezerwacje getRezerwacjePrzewozu(@PathParam("idprzewozu") int idprzewozu) {
 		List<Rezerwacja> listaRezerwacji = bean.getRezerwacjePrzewozu(idprzewozu);
 		Rezerwacje rezerwacjePrzewozu = new Rezerwacje(listaRezerwacji);
 		return rezerwacjePrzewozu;
 	}
-	
+
 	@Override
 	@GET
 	@Path("/trasy/{idtrasy}/przewozy")
-	public Przewozy getPrzewozyTrasy(@PathParam("idtrasy") int idtrasy){
+	public Przewozy getPrzewozyTrasy(@PathParam("idtrasy") int idtrasy) {
 		List<Przewoz> listaPrzewozow = bean.getPrzewozyTrasy(idtrasy);
 		Przewozy przewozyTrasy = new Przewozy(listaPrzewozow);
 		return przewozyTrasy;

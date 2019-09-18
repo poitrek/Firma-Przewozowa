@@ -66,15 +66,15 @@ public class FirmaWindow extends JFrame {
 		tabs.addTab("Autobusy", null, autobusCRUD, null);
 		add(tabs, BorderLayout.CENTER);
 		fillingButton = new JButton("Fill database");
-		ActionListener fillCommandListener = new DatabaseFiller(
-				przewozCRUD, klientCRUD, autobusCRUD, trasaCRUD, rezerwacjaCRUD
-		);
+//		ActionListener fillCommandListener = new DatabaseFiller(
+//				przewozCRUD, klientCRUD, autobusCRUD, trasaCRUD, rezerwacjaCRUD
+//		);
 		if (przewozCRUD.getTableModel().getRowCount() == 0
 				&& klientCRUD.getTableModel().getRowCount() == 0
 				&& autobusCRUD.getTableModel().getRowCount() == 0
 				&& trasaCRUD.getTableModel().getRowCount() == 0
 				&& rezerwacjaCRUD.getTableModel().getRowCount() == 0) {
-			fillingButton.addActionListener(fillCommandListener);
+//			fillingButton.addActionListener(fillCommandListener);
 			fillingButton.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {

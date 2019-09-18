@@ -62,20 +62,22 @@ public class FirmaTableModel<E extends TableElemDAO> extends AbstractTableModel 
 		}
 	}
 	
-	public void add(E elem) {
-		DAO.createElement(elem);
+	public void add(E elem) throws Exception {
+		String result = DAO.createElement(elem);
+		if (result.equals("ERR")) {
+			throw new Exception ("Nie udało się utworzyć elementu");
+		}
 		updateModel();
 	}
 
-	public void addNew() throws InstantiationException, IllegalAccessException {
+	public void addNew() throws Exception {
 		E elem = DAO.classE.newInstance();
 		add(elem);
 	}
 	
 	// Dodaje nowy element i nadaje mu wartości atrybutów z listy stringów
 	// w takiej kolejności, w jakiej są na liście
-	public void addNew(List<String> attributeList) throws InstantiationException,
-			IllegalAccessException {
+	public void addNew(List<String> attributeList) throws Exception {
 		E elem = DAO.classE.newInstance();
 		// Startujemy od atrybutu od indeksie 1, bo na początku jest
 		// klucz główny, który pomijamy
@@ -87,10 +89,11 @@ public class FirmaTableModel<E extends TableElemDAO> extends AbstractTableModel 
 		add(elem);
 	}
 
-	public void del(int rowIndex) throws InstantiationException,
-	IllegalAccessException {
+	public void del(int rowIndex) throws Exception {
 		E elem = elements.get(rowIndex);
-		DAO.deleteElement(elem.getId());
+		String result = DAO.deleteElement(elem.getId());
+		if (result.equals("ERR"))
+			throw new Exception("Nie udało się usunąć elementu!");
 		updateModel();
 	}
 }

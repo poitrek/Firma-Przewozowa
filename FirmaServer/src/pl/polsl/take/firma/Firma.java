@@ -20,35 +20,35 @@ public interface Firma {
 	public abstract String createKlient(Klient klient);
 	public abstract Klient findKlient(int idklienta);	
 	public abstract String updateKlient(Klient klient);
-	public abstract void deleteKlient(int idklienta);
+	public abstract String deleteKlient(int idklienta);
 	public abstract Klienci getKlienci();
 	
     // Autobusy ======================================================================
 	public abstract String createAutobus(Autobus autobus);
 	public abstract Autobus findAutobus(int idautobusu);
 	public abstract String updateAutobus(Autobus autobus);
-	public abstract void deleteAutobus(int idautobusu);
+	public abstract String deleteAutobus(int idautobusu);
 	public abstract Autobusy getAutobusy();
 	
     // Trasy =========================================================================
 	public abstract String createTrasa(Trasa trasa);
 	public abstract Trasa findTrasa(int idtrasy);
 	public abstract String updateTrasa(Trasa trasa);
-	public abstract void deleteTrasa(int idtrasy);
+	public abstract String deleteTrasa(int idtrasy);
 	public abstract Trasy getTrasy();
 	
     // Rezerwacje ====================================================================
 	public abstract String createRezerwacja(Rezerwacja rezerwacja);
 	public abstract Rezerwacja findREzerwacje(int idrecepty);
 	public abstract String updateRezerwacje(Rezerwacja rezerwacja);
-	public abstract void deleteRezerwacja(int idrecepty);
+	public abstract String deleteRezerwacja(int idrecepty);
 	public abstract Rezerwacje getRezerwacje();
 	
     // Przewozy ======================================================================
 	public abstract String createPrzewoz(Przewoz przewoz);
 	public abstract Przewoz findPrzewoz(int idprzewozu);
 	public abstract String updatePrzewoz(Przewoz przewoz);
-	public abstract void deletePrzewoz(int idprzewozu);
+	public abstract String deletePrzewoz(int idprzewozu);
 	public abstract Przewozy getPrzewoz();
 	
     // Zapytania zlozone =============================================================

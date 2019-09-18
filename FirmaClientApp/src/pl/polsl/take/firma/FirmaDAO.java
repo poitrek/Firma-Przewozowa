@@ -31,13 +31,15 @@ public class FirmaDAO<E extends TableElemDAO, EL extends ElemListDAO<E>> {
 		this.classEL = classEL;
 	}
 	
-	public void createElement(E elem) {
+	public String createElement(E elem) {
 		System.out.println("Client:FirmaDAO: tworzenie elementu " + elem.getClass());
 		System.out.println(elem.toString());
 		String url = base_url + urlPart;
 		StringWriter sw = new StringWriter();
 		JAXB.marshal(elem, sw);
-		HttpHelper.doPost(url, sw.toString(), marshal_format);
+		String result = HttpHelper.doPost(url, sw.toString(), marshal_format);
+//		String result = JAXB.unmarshal(new StringReader(txt), String.class);
+		return result;
 	}
 	
 	public E findElement(int id) {
@@ -56,9 +58,11 @@ public class FirmaDAO<E extends TableElemDAO, EL extends ElemListDAO<E>> {
 	}
 
 	
-	public void deleteElement(int id) {
+	public String deleteElement(int id) {
 		String url = base_url + urlPart + "/" + id;
-		HttpHelper.send("DELETE", url, null, marshal_format);
+		String result = HttpHelper.send("DELETE", url, null, marshal_format);
+//		String result = JAXB.unmarshal(new StringReader(txt), String.class);
+		return result;
 	}
 
 	

@@ -136,9 +136,11 @@ public class FirmaTablePanel extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				try {
 					tableModel.addNew(addItemForm.getFormInputValues());
+					JOptionPane.showMessageDialog(null, "Utworzono nowy element!",
+							"OK", JOptionPane.OK_OPTION);
 					addItemForm.clearFormFields();
 				} catch (Exception ex) {
-					JOptionPane.showMessageDialog(null, "Nie mozna utworzyć nowego elementu !",
+					JOptionPane.showMessageDialog(null, "Nie mozna utworzyć nowego elementu!",
 							"Błąd", JOptionPane.ERROR_MESSAGE);
 				}
 			}
@@ -155,8 +157,10 @@ public class FirmaTablePanel extends JPanel {
 				{
 					try {
 						tableModel.del(index);
+						JOptionPane.showMessageDialog(null, "Usunięto element!",
+								"OK", JOptionPane.OK_OPTION);
 					} catch(Exception ex) {
-						JOptionPane.showMessageDialog(null, "Nie mozna usunac tego elementu !",
+						JOptionPane.showMessageDialog(null, ex.getMessage(),
 								"Błąd", JOptionPane.ERROR_MESSAGE);
 					}
 				}
